@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
+      integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <title>Frontend Mentor | Expenses chart component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- My balance
+  $921.48
+
+  Spending - Last 7 days
+
+  mon
+  tue
+  wed
+  thu
+  fri
+  sat
+  sun
+
+  Total this month
+  $478.33
+
+  +2.4%
+  from last month -->
+
+    <div class="attribution">
+      <div class="mybalance_box">
+        <div class="balance">
+          <p>My balance</p>
+          <p><b>$921.48</b></p>
+        </div>
+        <div class="logo">
+          <img src="images\logo.svg" alt="" />
+        </div>
+      </div>
+      <div class="mainContaint">
+        <div class="spending">
+          <p>
+            <b>Spending - Last 7 days</b>
+          </p>
+        </div>
+
+        <canvas id="myChart"> </canvas>
+
+        <hr />
+
+        <div class="monthlyExpenses">
+          <div class="totalThisMonth">
+            <p>Total this month</p>
+            <h3>$478.33</h3>
+          </div>
+          <div class="lastMonth">
+            <h5><b>+2.4%</b></h5>
+            <p>from last month</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let myChart = document.getElementById("myChart").getContext("2d");
+
+      let barChart = new Chart(myChart, {
+        type: "bar",
+        // backgroundColor: "white",
+        data: {
+          labels: ["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
+          datasets: [
+            {
+              // legend: 'chart',
+              label: "expenses",
+              data: [17.45, 34.91, 52.36, 31.07, 23.39, 43.28, 25.48],
+              backgroundColor: " #ec755d",
+              hoverBackgroundColor: "#76b5bc",
+              borderRadius: 3,
+              borderSkipped: false
+            },
+          ],
+        },
+        options: {
+          plugins: {
+            legend: {
+              display: false,
+              labels: {
+                color: "rgb(255, 99, 132)",
+              },
+            },
+          },
+          scales: {
+            x:{
+              grid:{
+                display:false
+              }
+            },
+            y:{
+              display:false,
+              // ticks:{
+              //   display:false
+              // },
+              // grid:{
+              //   display:false
+              // }
+            }
+          }
+        }
+        
+      });
+    </script>
+  </body>
+</html>
